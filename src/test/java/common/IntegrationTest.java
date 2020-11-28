@@ -1,5 +1,6 @@
 package common;
 
+import course.write.Course;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -15,4 +16,17 @@ public abstract class IntegrationTest {
 
     @PersistenceContext
     protected EntityManager entityManager;
+
+
+    protected void create(Object o) {
+        entityManager.persist(o);
+    }
+
+    protected void deleteAll(Class zlass) {
+        entityManager
+                .createQuery(
+                "DELETE FROM " + zlass.getName()
+                )
+                .executeUpdate();
+    }
 }

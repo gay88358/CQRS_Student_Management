@@ -32,15 +32,16 @@ public class GetStudentEnrollmentQueryHandlerTest extends IntegrationTest {
     }
 
     private Long createStudentWithTwoEnrollment() {
-        Course oop = new Course("OOP");
-        entityManager.persist(oop);
-        Course os = new Course("OS");
-        entityManager.persist(os);
         Student student = new Student("Z-Xuan Hong");
-        student.addEnrollment(oop, Grade.A);
-        student.addEnrollment(os, Grade.A);
-        entityManager.persist(student);
+        student.addEnrollment(createCourse("OOP"), Grade.A);
+        student.addEnrollment(createCourse("OS"), Grade.A);
+        create(student);
         return student.getId();
     }
 
+    private Course createCourse(String name) {
+        Course course = new Course(name);
+        create(course);
+        return course;
+    }
 }

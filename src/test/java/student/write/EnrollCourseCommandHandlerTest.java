@@ -26,8 +26,8 @@ public class EnrollCourseCommandHandlerTest extends IntegrationTest {
 
     @Before
     public void setup() {
-        entityManager.persist(amber);
-        entityManager.persist(oop);
+        create(amber);
+        create(oop);
         studentRepository = new JPAStudentRepository(entityManager);
         courseRepository = new JPACourseRepository(entityManager);
     }

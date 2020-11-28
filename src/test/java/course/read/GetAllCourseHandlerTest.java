@@ -18,20 +18,10 @@ public class GetAllCourseHandlerTest extends IntegrationTest {
 
     @Before
     public void setup() {
-
         deleteAll(Course.class);
-
         addCourse(COURSE_ONE);
         addCourse(COURSE_TWO);
         addCourse(COURSE_THREE);
-    }
-
-    private void deleteAll(Class<Course> courseClass) {
-        entityManager
-                .createQuery(
-                "DELETE FROM Course c"
-                )
-                .executeUpdate();
     }
 
     @Test
@@ -57,7 +47,7 @@ public class GetAllCourseHandlerTest extends IntegrationTest {
     }
 
     private void addCourse(String name) {
-        this.entityManager.persist(new Course(name));
+        create(new Course(name));
     }
 
 
