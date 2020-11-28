@@ -8,8 +8,8 @@ import javax.persistence.EntityManager;
 @Repository
 public class CourseRepositoryImp extends JPAGenericRepository<Course> implements CourseRepository {
 
-    public CourseRepositoryImp(EntityManager entityManager) {
-        super(Course.class, entityManager);
+    public CourseRepositoryImp() {
+        super(Course.class);
     }
 
     @Override

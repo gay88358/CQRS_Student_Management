@@ -1,9 +1,13 @@
 package common;
 
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+
+@Repository
 public abstract class JPAGenericRepository<T> {
 
     @PersistenceContext
@@ -11,9 +15,8 @@ public abstract class JPAGenericRepository<T> {
 
     private Class<T> entityClass;
 
-    public JPAGenericRepository(Class<T> entityClass, EntityManager entityManager) {
+    public JPAGenericRepository(Class<T> entityClass) {
         this.entityClass = entityClass;
-        this.entityManager = entityManager;
     }
 
     public T findBy(Long id) {

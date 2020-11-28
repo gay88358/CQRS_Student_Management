@@ -18,7 +18,7 @@ public class AddCourseCommandTest extends IntegrationTest {
     @Test
     public void add_course() {
         // Arrangement
-        CourseRepository repository = new CourseRepositoryImp(entityManager);
+        CourseRepository repository = new CourseRepositoryImp();
         AddCourseCommand command = new AddCourseCommand(COURSE_NAME);
         AddCourseCommandHandler handler = new AddCourseCommandHandler(repository);
         // Act
@@ -27,5 +27,6 @@ public class AddCourseCommandTest extends IntegrationTest {
         // Assert
         Course course = repository.findBy(courseId);
         assertEquals(COURSE_NAME, course.getName());
+        System.out.println("123");
     }
 }

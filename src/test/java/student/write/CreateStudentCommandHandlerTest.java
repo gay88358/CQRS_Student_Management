@@ -18,7 +18,7 @@ public class CreateStudentCommandHandlerTest extends IntegrationTest {
     @Test
     public void create_student() {
         // Arrange
-        StudentRepository repository = new StudentRepositoryImp(entityManager);
+        StudentRepository repository = new StudentRepositoryImp();
         CreateStudentCommandHandler handler = new CreateStudentCommandHandler(repository);
         CreateStudentCommand command = new CreateStudentCommand("Z-Xuan Hong");
         // Act

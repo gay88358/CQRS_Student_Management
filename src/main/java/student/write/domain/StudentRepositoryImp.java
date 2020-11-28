@@ -13,8 +13,9 @@ import java.util.List;
 @Primary
 public class StudentRepositoryImp extends JPAGenericRepository<Student> implements StudentRepository {
 
-    public StudentRepositoryImp(EntityManager entityManager) {
-        super(Student.class, entityManager);
+
+    public StudentRepositoryImp() {
+        super(Student.class);
     }
 
     @Override
@@ -29,6 +30,6 @@ public class StudentRepositoryImp extends JPAGenericRepository<Student> implemen
 
     @Override
     public List<Student> findAll() {
-        return super.findAll();
+        return (List<Student>)super.findAll();
     }
 }

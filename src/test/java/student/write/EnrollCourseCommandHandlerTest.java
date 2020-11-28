@@ -29,8 +29,8 @@ public class EnrollCourseCommandHandlerTest extends IntegrationTest {
     public void setup() {
         create(amber);
         create(oop);
-        studentRepository = new StudentRepositoryImp(entityManager);
-        courseRepository = new CourseRepositoryImp(entityManager);
+        studentRepository = new StudentRepositoryImp();
+        courseRepository = new CourseRepositoryImp();
     }
 
     @Test
