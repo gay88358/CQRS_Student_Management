@@ -1,37 +1,22 @@
 package student.write;
 
 
+import common.IntegrationTest;
 import common.Result;
-import course.StudentEnrollmentConfig;
 import course.write.Course;
 import course.write.CourseRepository;
 import course.write.JPACourseRepository;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import student.write.domain.StudentRepository;
 import student.write.domain.Grade;
 import student.write.domain.Student;
 import student.write.enrollCourse.EnrollCourseCommand;
 import student.write.enrollCourse.EnrollCourseCommandHandler;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-
 import static org.junit.Assert.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {StudentEnrollmentConfig.class})
-@Transactional
-public class EnrollCourseCommandHandlerTest {
-
-    @PersistenceContext
-    EntityManager entityManager;
+public class EnrollCourseCommandHandlerTest extends IntegrationTest {
 
     private Course oop = new Course("OOP");
     private Student amber = new Student("Amber");

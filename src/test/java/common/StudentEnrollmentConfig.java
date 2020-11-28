@@ -1,16 +1,19 @@
-package student.write;
+package common;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -20,25 +23,17 @@ import java.util.Properties;
 
 @Configuration
 @PropertySource({
-        "classpath:database.properties"
+        "classpath:test.properties"
 })
-@ComponentScan({
-        "student.write",
-        "course"
-})
-
 @EnableTransactionManagement
-public class EnrollConfig {
+public class StudentEnrollmentConfig {
 
     private final Environment env;
 
     @Autowired
-    public EnrollConfig(Environment env) {
+    public StudentEnrollmentConfig(Environment env) {
         this.env = env;
     }
-
-
-
 
 
     @Bean
@@ -87,4 +82,9 @@ public class EnrollConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
+    @Bean
+    public
+    static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 }

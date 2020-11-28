@@ -1,7 +1,7 @@
 package student.read.performance;
 
 import common.Result;
-import course.StudentEnrollmentConfig;
+import common.StudentEnrollmentConfig;
 import course.write.Course;
 import org.junit.Test;
 import org.junit.runner.RunWith;

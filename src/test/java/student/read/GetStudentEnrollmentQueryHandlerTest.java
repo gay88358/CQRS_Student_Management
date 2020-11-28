@@ -1,32 +1,20 @@
 package student.read;
 
+import common.IntegrationTest;
 import common.Result;
-import course.StudentEnrollmentConfig;
 import course.write.Course;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import student.read.studentEnrollment.EnrollmentDto;
 import student.read.studentEnrollment.GetStudentEnrollmentQuery;
 import student.read.studentEnrollment.GetStudentEnrollmentQueryHandler;
 import student.write.domain.Grade;
 import student.write.domain.Student;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {StudentEnrollmentConfig.class})
-@Transactional
-public class GetStudentEnrollmentQueryHandlerTest {
-
-    @PersistenceContext
-    EntityManager entityManager;
+public class GetStudentEnrollmentQueryHandlerTest extends IntegrationTest {
 
     @Test
     public void get_student_enrollment_query() {
