@@ -1,7 +1,6 @@
-package course.write;
+package course.write.domain;
 
 import common.JPAGenericRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

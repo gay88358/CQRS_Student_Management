@@ -1,7 +1,5 @@
 package common;
 
-import course.write.Course;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;

@@ -1,4 +1,4 @@
-package course.write;
+package course.write.domain;
 
 public interface CourseRepository {
     Course findBy(Long courseId);

@@ -1,6 +1,6 @@
 package student.write.domain;
 
-import course.write.Course;
+import course.write.domain.Course;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

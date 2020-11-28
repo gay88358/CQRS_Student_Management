@@ -28,14 +28,6 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class StudentEnrollmentConfig {
 
-    private final Environment env;
-
-    @Autowired
-    public StudentEnrollmentConfig(Environment env) {
-        this.env = env;
-    }
-
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         final LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();

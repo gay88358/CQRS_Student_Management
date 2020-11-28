@@ -3,9 +3,9 @@ package student.write;
 
 import common.IntegrationTest;
 import common.Result;
-import course.write.Course;
-import course.write.CourseRepository;
-import course.write.CourseRepositoryImp;
+import course.write.domain.Course;
+import course.write.domain.CourseRepository;
+import course.write.domain.CourseRepositoryImp;
 import org.junit.Before;
 import org.junit.Test;
 import student.write.domain.StudentRepository;

@@ -2,7 +2,7 @@ package student.read;
 
 import common.IntegrationTest;
 import common.Result;
-import course.write.Course;
+import course.write.domain.Course;
 import org.junit.Test;
 import student.read.studentEnrollment.EnrollmentDto;
 import student.read.studentEnrollment.GetStudentEnrollmentQuery;

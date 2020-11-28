@@ -2,8 +2,8 @@ package student.write.enrollCourse;
 
 import common.CommandHandler;
 import common.Result;
-import course.write.Course;
-import course.write.CourseRepository;
+import course.write.domain.Course;
+import course.write.domain.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import student.write.domain.Student;

@@ -1,4 +1,4 @@
-package course.write;
+package course.write.addCourse;
 
 import common.Command;
 

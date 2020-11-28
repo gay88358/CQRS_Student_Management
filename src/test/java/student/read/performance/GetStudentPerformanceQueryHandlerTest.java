@@ -2,7 +2,7 @@ package student.read.performance;
 
 import common.IntegrationTest;
 import common.Result;
-import course.write.Course;
+import course.write.domain.Course;
 import org.junit.Test;
 import student.write.domain.Grade;
 import student.write.domain.Student;

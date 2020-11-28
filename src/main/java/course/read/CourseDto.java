@@ -1,7 +1,5 @@
 package course.read;
 
-import course.write.Course;
-
 import java.util.Objects;
 
 public class CourseDto {

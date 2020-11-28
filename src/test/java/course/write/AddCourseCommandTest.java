@@ -2,6 +2,11 @@ package course.write;
 
 import common.IntegrationTest;
 import common.Result;
+import course.write.addCourse.AddCourseCommand;
+import course.write.addCourse.AddCourseCommandHandler;
+import course.write.domain.Course;
+import course.write.domain.CourseRepository;
+import course.write.domain.CourseRepositoryImp;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
