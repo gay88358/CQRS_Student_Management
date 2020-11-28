@@ -1,16 +1,13 @@
 package student.write.domain;
 
 import course.write.Course;
-import student.write.domain.Enrollment;
-import student.write.domain.Grade;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "Student")
-public class Student {
+public class Student extends common.Entity {
 
     @Column(name = "name")
     private String name;
@@ -18,22 +15,12 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Enrollment> enrollments = new ArrayList<>();
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-
-
     public Student(String name) {
         this.name = name;
     }
 
     public String getName() {
         return this.name;
-    }
-
-    public long getId() {
-        return this.id;
     }
 
     public void addEnrollment(Course course, Grade grade) {
