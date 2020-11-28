@@ -2,8 +2,10 @@ package student.write;
 
 
 import common.Result;
+import course.StudentEnrollmentConfig;
 import course.write.Course;
 import course.write.CourseRepository;
+import course.write.JPACourseRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,34 +19,32 @@ import student.write.domain.Student;
 import student.write.enrollCourse.EnrollCourseCommand;
 import student.write.enrollCourse.EnrollCourseCommandHandler;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {EnrollConfig.class})
+@ContextConfiguration(classes = {StudentEnrollmentConfig.class})
 @Transactional
 public class EnrollCourseCommandHandlerTest {
 
-    StudentRepository studentRepository;
-
-
-    @Autowired
-    void setStudentRepository(@Qualifier("JPAStudentRepository")StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
-
-    @Autowired
-    CourseRepository courseRepository;
+    @PersistenceContext
+    EntityManager entityManager;
 
     private Course oop = new Course("OOP");
     private Student amber = new Student("Amber");
+    private StudentRepository studentRepository;
+    private CourseRepository courseRepository;
 
 
     @Before
     public void setup() {
-        this.courseRepository.add(oop);
-        this.studentRepository.add(amber);
+        entityManager.persist(amber);
+        entityManager.persist(oop);
+        studentRepository = new JPAStudentRepository(entityManager);
+        courseRepository = new JPACourseRepository(entityManager);
     }
 
     @Test

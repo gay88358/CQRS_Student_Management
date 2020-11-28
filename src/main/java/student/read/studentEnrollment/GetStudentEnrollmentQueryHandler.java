@@ -20,7 +20,7 @@ public class GetStudentEnrollmentQueryHandler implements QueryHandler<List<Enrol
         List<EnrollmentDto> enrollmentDtos =
                 this.entityManager
                 .createQuery(
-                        "SELECT new student.read.EnrollmentDto(s.name, c.name, e.grade) " +
+                        "SELECT new student.read.studentEnrollment.EnrollmentDto(s.name, c.name, e.grade) " +
                                 "FROM Enrollment e " +
                                 "JOIN Course c ON c.id = e.course.id " +
                                 "JOIN Student s ON s.id = e.student.id " +

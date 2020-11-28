@@ -29,7 +29,13 @@ public class Course {
     @Override
     public boolean equals(Object o) {
         Course c = (Course)o;
-        return c.id.equals(id) && c.name.equals(this.name);
+        if (this == c) // reference equals
+            return true;
+
+        if (this.id == null || c.id == null)
+            return false;
+
+        return c.name.equals(this.name);
     }
 
 

@@ -12,6 +12,10 @@ public class JPACourseRepository implements CourseRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+    public JPACourseRepository(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     @Override
     public Course findBy(Long courseId) {
         return this.entityManager.find(Course.class, courseId);
@@ -19,6 +23,7 @@ public class JPACourseRepository implements CourseRepository {
 
     @Override
     public void add(Course course) {
+        System.out.println(this.entityManager);
         this.entityManager.persist(course);
     }
 }

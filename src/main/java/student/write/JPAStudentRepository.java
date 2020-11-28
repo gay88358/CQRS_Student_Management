@@ -16,6 +16,10 @@ public class JPAStudentRepository implements StudentRepository {
     @PersistenceContext
     EntityManager entityManager;
 
+    public JPAStudentRepository(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     @Override
     public Student findBy(long id) {
         return this.entityManager.find(Student.class, new Long(id));

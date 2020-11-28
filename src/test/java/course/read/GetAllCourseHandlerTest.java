@@ -31,9 +31,20 @@ public class GetAllCourseHandlerTest {
 
     @Before
     public void setup() {
+
+        deleteAll(Course.class);
+
         addCourse(COURSE_ONE);
         addCourse(COURSE_TWO);
         addCourse(COURSE_THREE);
+    }
+
+    private void deleteAll(Class<Course> courseClass) {
+        entityManager
+                .createQuery(
+                "DELETE FROM Course c"
+                )
+                .executeUpdate();
     }
 
     @Test

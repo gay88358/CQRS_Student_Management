@@ -7,9 +7,6 @@ import student.write.domain.Student;
 
 import static org.junit.Assert.*;
 
-// domain invariant
-// enroll at most two courses
-// can not enroll duplicate course
 public class StudentTest {
 
     private final static Course OOP = new Course("OOP");

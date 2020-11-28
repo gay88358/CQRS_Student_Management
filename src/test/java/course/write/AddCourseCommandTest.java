@@ -30,7 +30,7 @@ public class AddCourseCommandTest {
     @Test
     public void add_course() {
         // Arrangement
-        CourseRepository repository = new JPACourseRepository();
+        CourseRepository repository = new JPACourseRepository(entityManager);
         AddCourseCommand command = new AddCourseCommand(COURSE_NAME);
         AddCourseCommandHandler handler = new AddCourseCommandHandler(repository);
         // Act
