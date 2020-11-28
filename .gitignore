@@ -1,3 +1,5 @@
 _Store
 .idea
-*/target/**
+
+StudentEnrollmentManagement.iml
+target/**
