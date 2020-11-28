@@ -20,7 +20,7 @@ public abstract class JPAGenericRepository<T> {
         return entityManager.find(entityClass, id);
     }
 
-    public List<T> findAll() {
+    public List findAll() {
         return entityManager
                 .createQuery(
                 "From" + entityClass.toString())
