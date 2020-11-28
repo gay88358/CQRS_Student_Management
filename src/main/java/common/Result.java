@@ -13,5 +13,31 @@ public abstract class Result<T> {
     }
 
     public abstract T getValue();
+
+
+    public static class Success<T> extends Result<T> {
+        private final T t;
+
+        Success(T t) {
+            this.t = t;
+        }
+        public T getValue() {
+            return this.t;
+        }
+    }
+
+
+    public static class Failure<T> extends Result<T> {
+        private final List<String> messages;
+
+        Failure(List<String> messages) {
+            this.messages = messages;
+        }
+
+        public T getValue() {
+            throw new RuntimeException("common.Failure result contains no value");
+        }
+    }
+
 }
 
