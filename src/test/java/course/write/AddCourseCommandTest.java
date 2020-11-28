@@ -13,7 +13,7 @@ public class AddCourseCommandTest extends IntegrationTest {
     @Test
     public void add_course() {
         // Arrangement
-        CourseRepository repository = new JPACourseRepository(entityManager);
+        CourseRepository repository = new CourseRepositoryImp(entityManager);
         AddCourseCommand command = new AddCourseCommand(COURSE_NAME);
         AddCourseCommandHandler handler = new AddCourseCommandHandler(repository);
         // Act

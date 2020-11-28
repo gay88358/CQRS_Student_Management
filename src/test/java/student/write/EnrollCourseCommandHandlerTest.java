@@ -5,12 +5,13 @@ import common.IntegrationTest;
 import common.Result;
 import course.write.Course;
 import course.write.CourseRepository;
-import course.write.JPACourseRepository;
+import course.write.CourseRepositoryImp;
 import org.junit.Before;
 import org.junit.Test;
 import student.write.domain.StudentRepository;
 import student.write.domain.Grade;
 import student.write.domain.Student;
+import student.write.domain.StudentRepositoryImp;
 import student.write.enrollCourse.EnrollCourseCommand;
 import student.write.enrollCourse.EnrollCourseCommandHandler;
 
@@ -28,8 +29,8 @@ public class EnrollCourseCommandHandlerTest extends IntegrationTest {
     public void setup() {
         create(amber);
         create(oop);
-        studentRepository = new JPAStudentRepository(entityManager);
-        courseRepository = new JPACourseRepository(entityManager);
+        studentRepository = new StudentRepositoryImp(entityManager);
+        courseRepository = new CourseRepositoryImp(entityManager);
     }
 
     @Test

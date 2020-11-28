@@ -1,37 +1,34 @@
-package student.write;
+package student.write.domain;
 
+import common.JPAGenericRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import student.write.domain.StudentRepository;
 import student.write.domain.Student;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
 @Primary
-public class JPAStudentRepository implements StudentRepository {
+public class StudentRepositoryImp extends JPAGenericRepository<Student> implements StudentRepository {
 
-    @PersistenceContext
-    EntityManager entityManager;
-
-    public JPAStudentRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public StudentRepositoryImp(EntityManager entityManager) {
+        super(Student.class, entityManager);
     }
 
     @Override
     public Student findBy(long id) {
-        return this.entityManager.find(Student.class, new Long(id));
+        return super.findBy(id);
     }
 
     @Override
     public void add(Student student) {
-        this.entityManager.persist(student);
+        super.add(student);
     }
 
     @Override
     public List<Student> findAll() {
-        return null;
+        return super.findAll();
     }
 }
