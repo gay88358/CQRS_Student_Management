@@ -22,6 +22,7 @@ import java.util.Properties;
 @PropertySource({
         "classpath:test.properties"
 })
+@ComponentScan({"student", "course"})
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
 public class StudentEnrollmentConfig {
@@ -53,7 +54,7 @@ public class StudentEnrollmentConfig {
         return entityManagerFactoryBean;
     }
 
-    private final Properties additionalProperties() {
+    private Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));

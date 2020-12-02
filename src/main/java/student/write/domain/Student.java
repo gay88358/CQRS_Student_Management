@@ -15,6 +15,10 @@ public class Student extends common.Entity {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Enrollment> enrollments = new ArrayList<>();
 
+    protected Student() {
+
+    }
+
     public Student(String name) {
         this.name = name;
     }

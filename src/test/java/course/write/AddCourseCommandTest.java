@@ -8,17 +8,19 @@ import course.write.domain.Course;
 import course.write.domain.CourseRepository;
 import course.write.domain.CourseRepositoryImp;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.*;
 
 public class AddCourseCommandTest extends IntegrationTest {
-
     private static final String COURSE_NAME = "OOP";
+
+    @Autowired
+    CourseRepository repository;
 
     @Test
     public void add_course() {
         // Arrangement
-        CourseRepository repository = new CourseRepositoryImp();
         AddCourseCommand command = new AddCourseCommand(COURSE_NAME);
         AddCourseCommandHandler handler = new AddCourseCommandHandler(repository);
         // Act

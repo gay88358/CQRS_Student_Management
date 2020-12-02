@@ -6,8 +6,6 @@ import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -17,12 +15,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 import java.util.Properties;
 
 @Configuration
 @PropertySource({
-        "classpath:database.properties"
+        "classpath:application.properties"
 })
 @ComponentScan({
         "student",
@@ -33,6 +30,14 @@ import java.util.Properties;
 @EnableAspectJAutoProxy(proxyTargetClass=true)
 public class StudentEnrollmentConfig {
 
+
+    private Environment environment;
+
+    @Autowired
+    public void setEnvironment(Environment environment) {
+
+        this.environment = environment;
+    }
 
     @Bean
     public LoggerAspect loggerAspect() {
@@ -57,17 +62,12 @@ public class StudentEnrollmentConfig {
 
     @Bean
     @Qualifier("AdditionalProperties")
-    Properties additionalProperties(
-            @Value("${hibernate.show_sql}") String showSql,
-            @Value("${hibernate.dialect}") String dialect,
-            @Value("${hibernate.cache.use_second_level_cache}") String secondLevelCache,
-            @Value("${hibernate.cache.use_query_cache}") String queryCache
-    ) {
+    Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.show_sql", showSql);
-        hibernateProperties.setProperty("hibernate.dialect", dialect);
-        hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", secondLevelCache);
-        hibernateProperties.setProperty("hibernate.cache.use_query_cache", queryCache);
+        hibernateProperties.setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+        hibernateProperties.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
+        hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", environment.getProperty("hibernate.cache.use_second_level_cache"));
+        hibernateProperties.setProperty("hibernate.cache.use_query_cache", environment.getProperty("hibernate.cache.use_query_cache"));
         return hibernateProperties;
     }
 

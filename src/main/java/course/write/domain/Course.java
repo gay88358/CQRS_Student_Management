@@ -9,6 +9,10 @@ public class Course extends common.Entity {
     @Column(name = "name")
     private String name;
 
+    protected Course() {
+
+    }
+
     public Course(String name) {
         this.name = name;
     }

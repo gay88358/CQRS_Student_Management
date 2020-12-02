@@ -9,18 +9,22 @@ import javax.persistence.*;
 public class Enrollment {
     @ManyToOne
     @JoinColumn(name = "studentId")
-    private final Student student;
+    private Student student;
 
     @ManyToOne
     @JoinColumn(name = "courseId")
-    private final Course course;
+    private Course course;
 
     @Column(name = "grade")
-    private final Grade grade;
+    private Grade grade;
 
     @Id
     @GeneratedValue
     private Long id;
+
+    protected Enrollment() {
+
+    }
 
     public Enrollment(Student student, Course course, Grade grade) {
         this.grade = grade;

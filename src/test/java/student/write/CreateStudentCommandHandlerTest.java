@@ -3,6 +3,7 @@ package student.write;
 import common.IntegrationTest;
 import common.Result;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import student.write.createStudent.CreateStudentCommand;
 import student.write.createStudent.CreateStudentCommandHandler;
 import student.write.domain.Student;
@@ -15,10 +16,13 @@ import static org.junit.Assert.*;
 
 public class CreateStudentCommandHandlerTest extends IntegrationTest {
 
+
+    @Autowired
+    private StudentRepository repository;
+
     @Test
     public void create_student() {
         // Arrange
-        StudentRepository repository = new StudentRepositoryImp();
         CreateStudentCommandHandler handler = new CreateStudentCommandHandler(repository);
         CreateStudentCommand command = new CreateStudentCommand("Z-Xuan Hong");
         // Act

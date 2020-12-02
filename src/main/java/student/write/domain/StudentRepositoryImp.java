@@ -9,6 +9,7 @@ import student.write.domain.Student;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+
 @Repository
 @Primary
 public class StudentRepositoryImp extends JPAGenericRepository<Student> implements StudentRepository {
@@ -33,3 +34,8 @@ public class StudentRepositoryImp extends JPAGenericRepository<Student> implemen
         return (List<Student>)super.findAll();
     }
 }
+
+
+
+
+

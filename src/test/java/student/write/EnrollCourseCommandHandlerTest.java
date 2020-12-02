@@ -8,6 +8,7 @@ import course.write.domain.CourseRepository;
 import course.write.domain.CourseRepositoryImp;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import student.write.domain.StudentRepository;
 import student.write.domain.Grade;
 import student.write.domain.Student;
@@ -21,16 +22,18 @@ public class EnrollCourseCommandHandlerTest extends IntegrationTest {
 
     private Course oop = new Course("OOP");
     private Student amber = new Student("Amber");
-    private StudentRepository studentRepository;
+
+    @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
 
     @Before
     public void setup() {
         create(amber);
         create(oop);
-        studentRepository = new StudentRepositoryImp();
-        courseRepository = new CourseRepositoryImp();
     }
 
     @Test
